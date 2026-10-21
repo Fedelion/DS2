@@ -1,0 +1,22 @@
+Da consegnare:
+D1.1 Specifiche Tecniche (Formato: PDF)
+D1.2 Release 1.0 dell'applicazione (formato ZIP)
+Consegna della prima release dell’applicativo in formato archivio ZIP.
+Il pacchetto di consegna dovrà contenere tutti i file necessari per l’installazione e l’avvio
+dell’applicazione, ad eccezione dell’ambiente virtuale Python (.venv), che non dovrà essere
+incluso.
+Dovranno essere presenti:
+•
+•
+•
+
+lo script di installazione dell’applicativo;
+il file requirements.txt contenente l’elenco delle dipendenze software necessarie;
+il codice sorgente e gli eventuali file di configurazione richiesti per il corretto
+funzionamento dell’applicazione.
+
+D1.3 Guida all'Installazione e all'Utilizzo di DeepSight (formato PDF)
+Consegna della Guida all'Installazione e all'Utilizzo di DeepSight, contenente le istruzioni
+operative per l’installazione, la configurazione iniziale e l’utilizzo dell’applicazione, corredate
+da eventuali schermate esplicative ed esempi pratici
+

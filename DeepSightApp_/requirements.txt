@@ -1,0 +1,54 @@
+# ============================================================================
+# DeepSight - Requirements (Release 1.0)
+# ============================================================================
+# Elenco delle dipendenze software necessarie al funzionamento dell'applicazione.
+# Installazione consigliata tramite lo script di installazione incluso
+# (install.bat su Windows, install.sh su macOS/Linux), che crea automaticamente
+# un ambiente virtuale (.venv) e installa questo file al suo interno.
+#
+# Python supportato: 3.9 - 3.12 (consigliato 3.11 o 3.12).
+#
+# NOTE SULLE VERSIONI FISSATE (vincoli verificati durante lo sviluppo):
+#   - torch e' fissato a 2.2.2 perche' facenet-pytorch richiede questa versione
+#     specifica per funzionare correttamente (dispone di wheel precompilate
+#     anche per Python 3.12 su Windows/macOS/Linux, nessuna compilazione necessaria).
+#   - torchvision e' fissato a 0.17.2 (versione ufficialmente abbinata a torch 2.2.2).
+#   - transformers e' fissato a <4.40.0 (usare 4.39.3): le versioni successive
+#     disabilitano il backend PyTorch se la versione di torch e' < 2.4,
+#     rompendo il caricamento del modello CLIP.
+#   - numpy e' fissato a <2 per compatibilita' con questa versione di torch/transformers.
+#   - chromadb e' fissato a >=1.0.0 (core riscritto in Rust): dalla 1.0 in poi non
+#     dipende piu' in fase di runtime da "chroma-hnswlib" (pacchetto C++ che su
+#     Windows/Python 3.12 non ha una wheel precompilata e richiederebbe Microsoft
+#     C++ Build Tools per essere compilato da sorgente). Usare una versione
+#     precedente (0.4.x/0.5.x) puo' causare l'errore
+#     "Microsoft Visual C++ 14.0 or greater is required" durante l'installazione.
+# ============================================================================
+
+numpy<2
+torch==2.2.2
+torchvision==0.17.2
+transformers==4.39.3
+
+# --- Interfaccia grafica ---
+customtkinter>=5.2.0,<6.0.0
+tkinterdnd2>=0.3.0
+pillow>=10.0.0
+
+# --- Database (relazionale + vettoriale) ---
+duckdb>=0.10.0
+chromadb>=1.0.0,<2.0.0
+
+# --- Modelli AI / Computer Vision ---
+opencv-python-headless>=4.8.0
+easyocr>=1.7.1
+facenet-pytorch>=2.5.3
+
+# --- Grafici Dashboard ---
+matplotlib>=3.7.0
+
+# --- Traduzione query di ricerca ---
+deep-translator>=1.11.4
+
+# --- Reverse/forward geocoding (Nominatim) ---
+requests>=2.31.0

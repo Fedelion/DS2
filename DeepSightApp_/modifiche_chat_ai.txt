@@ -1,0 +1,21 @@
+Modifiche apportate da Antigravity (Assistente AI) durante l'ultima sessione:
+
+1. Risoluzione errori di import librerie e compatibilità:
+   - Installata la libreria `deep_translator` che risultava mancante.
+   - Installata la libreria `facenet-pytorch` che risultava mancante in alcune esecuzioni.
+   - Individuato e risolto un conflitto di versioni critico tra `transformers` e `facenet-pytorch`:
+     `facenet-pytorch` ha forzato l'uso di PyTorch 2.2.2, mentre la versione più recente di `transformers` (5.x) disabilitava PyTorch se la versione era inferiore a 2.4.
+   - Eseguito il downgrade di `transformers` (alla versione 4.39.3, ovvero `<4.40.0`) per ripristinare il corretto caricamento di PyTorch e del modello CLIPModel.
+
+2. Aggiornamento script di avvio (`Config_Start/start_app.py`):
+   - Aggiunti `deep_translator` e `facenet_pytorch` (come modulo `facenet-pytorch` di pip) alla lista `dipendenze` della funzione `controlla_dipendenze()`. In questo modo l'applicazione verificherà autonomamente la presenza di questi pacchetti ad ogni avvio futuro.
+
+3. Risoluzione crash applicativo durante la ricerca testuale (`UI/ricerca.py`):
+   - Risolto un bug critico nel fallback della ricerca testuale (caso in cui la ricerca vettoriale con ChromaDB è vuota o fallisce). 
+   - L'errore `'>=' not supported between instances of 'tuple' and 'float'` avveniva perché la funzione `_calcola_score_testo` restituiva una tupla (valori multipli) ma il codice assegnava l'intera tupla al punteggio del file.
+   - Corretto lo scompattamento assegnando correttamente lo score (float), il flag `in_tag` e il flag `in_ocr` ai risultati grezzi.
+
+4. Miglioramento dell'esperienza utente nella UI (`UI/ricerca.py`):
+   - Modificato il comportamento della schermata di ricerca per rendere il campo "Testo" e l' "Immagine di Reference" mutuamente esclusivi.
+   - Aggiunto un event listener (`<KeyRelease>`) sulla barra di ricerca testuale: se l'utente inizia a digitare, un'eventuale immagine caricata viene rimossa in automatico.
+   - Modificata la funzione `seleziona_reference()`: quando l'utente seleziona una foto di riferimento, l'eventuale testo digitato in precedenza viene automaticamente cancellato per evitare conflitti logici in fase di ricerca semantica.

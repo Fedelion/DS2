@@ -1,0 +1,166 @@
+=== PAGINA 1 ===
+ 
+pag. 1 
+ 
+Learning by Project - Tech 
+Progetto DeepSight 
+1. Obiettivo 
+2. Requisiti 
+2.1. Ricerca dei contenuti 
+Immagini e video 
+3. Deliverable 
+D1.1 - Analisi requisiti e casi d’uso 
+D1.2 - Release 1.0 dell’applicazione 
+D1.3 - Documentazione 
+4. Strumenti e tecnologie 
+ 
+1. 
+Obiettivo 
+La vostra azienda deve sviluppare un’applicazione per permettere la ricerca avanzata di 
+foto e video in un archivio privato a cui l’utente aggiunge progressivamente nuovi 
+contenuti.  
+L’applicazione si propone come strumento di supporto per la ricerca dei contenuti per 
+potenziali clienti quali: 
+● content creator per archiviazione e ricerca di contenuti per pubblicazione su web, 
+blog,  piattaforme social, etc.,  
+● associazioni culturali o ricreative per archiviazione di contenuti legati a eventi, 
+iniziative, etc. e pubblicazione su sito o piattaforme social,  
+● aziende private per gestione on-premise dei propri contenuti e pubblicazione su 
+sito istituzionale e canali social 
+Rispetto alle piattaforme tradizionali che utilizzano metadata inseriti manualmente (titolo, 
+descrizione, data, etc.) o disponibili nel file del contenuto (data di creazione, luogo di 
+creazione, risoluzione, durata, dimensioni, etc.), l’applicazione deve estrarre dai contenuti 
+informazioni semantiche aggiuntive mediante l’uso di strumenti e modelli basati su AI, in 
+particolare modelli di Machine Learning classico e di Deep Learning per la ricerca di 
+pattern visuali (oggetti, facce, concetti) e per l’analisi di informazioni testuali (targhe, 
+cartelli, scritte su oggetti contenuti nell’immagine, trascrizione del parlato). 
+L’utente utilizzerà l’applicazione tramite la sua interfaccia grafica sia per il caricamento di 
+nuovi contenuti sia per la ricerca avanzata e il download dei contenuti di interesse. 
+ 
+ 
+
+=== PAGINA 2 ===
+ 
+pag. 2 
+ 
+2. 
+Requisiti 
+L’applicazione deve soddisfare i seguenti requisiti funzionali: 
+● upload di immagini e video tramite interfaccia utente oppure tramite copia manuale 
+in cartella condivisa (a scelta) 
+● processing automatico dei nuovi contenuti caricati, per estrazione di metadata e 
+altre informazioni tramite strumenti di analisi multimediale e modelli AI 
+● archiviazione dei contenuti originali in un’area configurabile dell’applicazione (es. 
+cartella condivisa o locale)  
+● analisi automatica dei nuovi contenuti, estrazione di metadata, feature e altre 
+informazioni rilevanti 
+● generazione di embeddings per indicizzazione delle informazioni in apposito 
+database 
+● ricerca avanzata tramite interfaccia utente e restituzione dei risultati 
+● (opzionale) ordinamento dei risultati (ranking) in base alla rilevanza 
+L’applicazione deve soddisfare i seguenti requisiti non funzionali: 
+● deve poter essere installata su un PC Desktop o portatile in una apposita cartella 
+● deve contenere uno script di installazione e di avvio delle varie componenti 
+(database, interfaccia utente, etc) 
+● la configurazione deve essere in un file di testo all’interno del codice 
+● deve utilizzare risorse compatibili con un normale PC, limitando l’utilizzo della GPU  
+e permettendo l’esecuzione, anche se con prestazioni peggiori, anche in caso di 
+assenza di GPU 
+Per quanto riguarda i modelli AI, è richiesto di utilizzare esclusivamente modelli gratuiti (e 
+preferibilmente open) da eseguire localmente, per impedire l’invio di contenuti privati o 
+confidenziali a modelli in cloud (ChatGPT, Gemini, Claude, …).  
+In caso di forti limitazioni derivanti dall’uso di modelli locali, verificare con il docente e il 
+referente del corso la possibilità di testare l’applicazione su macchine dotate di maggiori 
+risorse computazionali e discutere l’opzione migliore per l’implementazione. 
+2.1. 
+Ricerca dei contenuti 
+L’interfaccia utente deve permettere i seguenti tipi di ricerca: 
+● data di creazione (exact match o all’interno di un intervallo specificato) 
+● luogo di creazione del contenuto (exact match) 
+● riconoscimento di facce e oggetti specifici a partire da immagine di esempio 
+(ricerca per similarità) 
+● ricerca semantica per concetti, topic o termini rilevanti (exact match o per similarità)  
+
+=== PAGINA 3 ===
+ 
+pag. 3 
+ 
+La ricerca di facce e oggetti deve essere effettuata per similarità fornendo all’applicazione 
+una singola immagine di query.  
+L’interfaccia deve includere una dashboard riassuntiva che riporti il numero di contenuti 
+caricati, le dimensioni dell’archivio e del database e altre indicazioni utili. 
+(Opzionale) Ricerca per categorie aggiuntive definite dall’utente 
+(Opzionale) Creazione di ricerche predefinite per esecuzione successiva (es. ricerca di 
+una particolare situazione o di una persona, con risultati diversi a seguito di nuove 
+aggiunte nell’archivio) 
+(Opzionale) La ricerca per similarità permette di fornire in input un insieme di immagini di 
+query per migliorare la qualità dei risultati (es. foto diverse della stessa persona o oggetto).  
+2.2. 
+Immagini e video 
+Il requisito minimo da soddisfare è il caricamento di singole immagini che vengono 
+processate e indicizzate dall'applicazione. Nel caso di caricamento di contenuti video, da 
+questi devono essere estratti manualmente frame significativi con un campionamento a 
+intervalli regolari o in base ai cambi scena in modo da processare le singole immagini.  
+Va però mantenuto il collegamento con il contenuto originale, sia esso immagine o video, 
+per permetterne il download. 
+(Opzionale) L’applicazione utilizza modelli AI per la trascrizione dell’audio dei contenuti 
+video e l’estrazione di parole significative da indicizzare come metadata aggiuntivi 
+(Opzionale) Il video viene caricato interamente e viene processato automaticamente, con 
+estrazione di frame, campionamento parametrizzabile, creazione di thumbnail per la 
+visualizzazione. 
+(Opzionale) L’interfaccia utente mostra i vari segmenti del video e permette di mandare in 
+play e scaricare il segmento di interesse per utilizzo successivo 
+ 
+3. 
+Deliverable 
+D1.1 - Analisi requisiti e casi d’uso 
+Analisi di dettaglio dei requisiti e descrizione del flusso di lavoro dell’operazione per i 
+seguenti casi d’uso: 
+1. upload di nuovi contenuti e processing automatico 
+2. ricerca avanzata dei contenuti 
+3. download dei contenuti di interesse 
+D1.2 - Release 1.0 dell’applicazione 
+Prima release dell’applicazione che implementa tutti i requisiti minimi ed eventuali requisiti 
+opzionali.  
+Codice sorgente fornito tramite repository git o cartella zip. 
+
+=== PAGINA 4 ===
+ 
+pag. 4 
+ 
+D1.3 - Documentazione 
+Documentazione utente per l’installazione e l’utilizzo dell’applicazione, con screenshot di 
+esempio. 
+Creazione di diagrammi di architettura, flusso e componenti a corredo della 
+documentazione. 
+ 
+4. Strumenti e tecnologie  
+Nello sviluppo dell’applicazione si potrà far uso di modelli e strumenti free e 
+(preferibilmente) open source per il processing e la ricerca dei contenuti. 
+A titolo di esempio, vengono menzionati nel seguito  alcuni strumenti e modelli di uso 
+comune che possono essere utili per l’implementazione dell’applicazione (la scelta degli 
+strumenti più adeguati è però lasciata libera e parte integrante dell’attività): 
+● Per l’estrazione di metadata tradizionali (risoluzione, data di creazione o modifica, 
+posizione) si possono utilizzare strumenti quali ffmpeg/ffprobe o analoghi. 
+● Per l’identificazione di pattern all’interno di immagini e video si possono utilizzare 
+modelli di Computer Vision quali OpenCV, RetinaFace, CLIP, YOLO o analoghi. 
+Valutare attentamente le risorse richieste per l’esecuzione di questi modelli durante 
+l’utilizzo dell’applicazione. E’ consigliabile utilizzare modelli che richiedono minori 
+risorse computazionali per massimizzare il deployment dell’applicazione. 
+● Per l’archiviazione dei file può essere sufficiente una cartella sul filesystem 
+(eventualmente si può utilizzare uno strumento CMS non troppo pesante). Occorre 
+però prevedere di organizzare le informazioni relative ai contenuti in strutture che 
+permettano di indicizzare e ricercare i contenuti in maniera efficiente. Si possono 
+considerare sia DB relazionali sia di tipo NoSQL (vettoriali, documentali, a grafi). 
+Privilegiare soluzioni open e di ampia adozione. Tra i DB vettoriali le alternative più 
+comuni sono probabilmente Qdrant e Weaviate, tra i DB a grafi sono molto utilizzati 
+Neo4j e GraphDB. 
+● Per la realizzazione dell’interfaccia utente si può ricorrere a framework e librerie 
+grafiche che minimizzino il lavoro di sviluppo. Tra le librerie basate su Python si 
+segnalano Streamlit e Plotly. Tenuto conto delle competenze acquisite nel corso e 
+del tempo a disposizione, si suggerisce l’uso di librerie basate su Python. In 
+alternativa, si possono considerare framework Javascript di ampia diffusione, quali 
+VueJS o React o Angular, che però richiedono un supporto di strumenti AI per lo 
+sviluppo se non si conoscono già da esperienze pregresse. 
+ 
+
